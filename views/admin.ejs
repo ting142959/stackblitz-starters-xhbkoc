@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CASIO Shopping Website</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Admin Panel - CASIO Shopping Website</h1>
+        </div>
+    </header>
+    <main>
+        <section class="add-product">
+            <h2>Add New Product</h2>
+            <form action="/admin/add" method="POST">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <input type="number" name="price" placeholder="Price" step="0.01" required>
+                <textarea name="description" placeholder="Description" required></textarea>
+                <input type="text" name="category" placeholder="Category" required>
+                <input type="text" name="image" placeholder="Image URL" required>
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+        <section class="products">
+            <h2>Current Products</h2>
+            <% products.forEach(product => { %>
+                <div class="product">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                    <h3><%= product.name %></h3>
+                    <p class="price">$<%= product.price.toFixed(2) %></p>
+                    <p><%= product.description %></p>
+                    <p>Category: <%= product.category %></p>
+                </div>
+            <% }); %>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 CASIO Shopping Website - Admin Panel</p>
+    </footer>
+</body>
+</html>
